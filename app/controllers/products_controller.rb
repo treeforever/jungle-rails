@@ -8,4 +8,9 @@ class ProductsController < ApplicationController
     @product = Product.find params[:id]
   end
 
+  def top
+    @products = Product.all.order(price_cents: :desc)
+  end
+
+
 end

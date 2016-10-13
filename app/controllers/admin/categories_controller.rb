@@ -24,7 +24,7 @@ class Admin::CategoriesController < ApplicationController
     if @category.update(category_params)
       redirect_to [:admin, :categories], notice: 'Category updated!'
     else
-      render :edit
+      render :show
     end
   end
 
