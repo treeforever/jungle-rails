@@ -25,8 +25,14 @@
             <% end %>
           </ul>
         </li>
-        <li class="login">
-          <%= link_to "Log in or Register", [:new, :user] %></a>
+        <li>
+          <div>
+          <% if current_user %>
+            <li class="sign-in-as">Signed in as <%= current_user.email %> </li> <li><%= link_to "Logout", '/logout' %></li>
+          <% else %>
+          <li>  <%= link_to 'Login', '/login' %> </li> <li><%= link_to 'Signup', '/signup' %> </li>
+          <% end %>
+        </div>
         </li>
 
       </ul>
