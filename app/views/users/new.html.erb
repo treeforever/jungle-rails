@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jungle</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <%= render 'layouts/top_nav' %>
+
+  <main class="container">
+    <h2>User Log In or Register</h2>
+
+    <h3>Log In</h3>
+      <div class="form-group">
+        <%= form.label :email %>
+        <%= form.text_field :email, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :password %>
+        <%= form.text_field :password, class: 'form-control' %>
+      </div>
+
+
+    <h3>Register</h3>
+      <div class="form-group">
+        <%= form.label :firstname %>
+        <%= form.text_field :firstname, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :lastname %>
+        <%= form.text_field :lastname, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :email %>
+        <%= form.text_field :email, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :password %>
+        <%= form.text_field :password, class: 'form-control' %>
+      </div>
+
+
+  </main>
+
+</body>
+</html>
