@@ -168,35 +168,35 @@ puts "Re-creating Products ..."
 
 
 Review.create!({
-  product_id:  12,
+  product_id:  60,
   user_id: 2,
   description: 'Great product! My cat loves sleep in there!',
   rating: 4
 })
 
 Review.create!({
-  product_id:  12,
+  product_id:  60,
   user_id: 3,
   description: 'I am not happy. Needs refund!',
   rating: 1
 })
 
 Review.create!({
-  product_id:  11,
+  product_id:  59,
   user_id: 3,
   description: 'Meh. It is okay, still hanging in there',
   rating: 3
 })
 
 Review.create!({
-  product_id:  11,
+  product_id:  59,
   user_id: 2,
   description: 'Great! Will recommend!',
   rating: 5
 })
 
 Review.create!({
-  product_id:  10,
+  product_id:  58,
   user_id: 2,
   description: 'Great! I have already bought dozens of this product!',
   rating: 5
