@@ -8,9 +8,8 @@ class JungleMailer < ApplicationMailer
 
   default from: 'no-reply@jungle.com'
 
-  def receipt_notification(user)
-    @greeting = "Hi"
-    @user = user
-    mail(to: @user.email, subject:"Order confirmation" + @user.order.id)
+  def receipt_notification(order)
+    @order = order
+    mail(to: @order.email, subject: @order.id)
   end
 end

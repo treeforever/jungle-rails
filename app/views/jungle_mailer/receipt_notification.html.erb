@@ -7,7 +7,17 @@
     <h1>Thank you for shopping at Jungle.com!</h1>
     <p>
       You have successfully placed your order.
-      Your order confirmation is: <%= @order.login %>.<br>
+      Your order confirmation is: <%= @order.id %>.<br>
+      Your order details are: <% @order.line_items.each do  |line_item|%>
+      <br>
+      <br>
+    <%= line_item.product.name %>
+        Quantity: <%= line_item.quantity %>
+        Total: <%= number_to_currency(line_item.total_price_cents / 100.00)%>
+        <% end %>
+      <br>
+      <br>
+      Grand Total: <%= number_to_currency(@order.total_cents / 100.00) %>
     </p>
   </body>
 </html>

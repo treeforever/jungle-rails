@@ -8,14 +8,6 @@ class OrdersController < ApplicationController
     charge = perform_stripe_charge
     order  = create_order(charge)
 
-    if order.valid?
-      empty_cart!
-      redirect_to order, notice: 'Your Order has been placed.'
-      JungleMailer.receipt_notification(@user)
-    else
-      redirect_to cart_path, error: order.errors.full_messages.first
-    end
-
   rescue Stripe::CardError => e
     redirect_to cart_path, error: e.message
   end
@@ -54,6 +46,13 @@ class OrdersController < ApplicationController
       end
     end
     order.save!
+    if order.valid?
+      empty_cart!
+      redirect_to order, notice: 'Your Order has been placed.'
+      JungleMailer.receipt_notification(order).deliver_now
+    else
+      redirect_to cart_path, error: order.errors.full_messages.first
+    end
     order
   end
 
