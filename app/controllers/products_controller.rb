@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-
+  helper ProductHelper
   def index
     @products = Product.all.order(created_at: :desc)
   end
