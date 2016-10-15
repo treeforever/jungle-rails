@@ -38,6 +38,11 @@ main section.categories-show {
         width: 100%;
         opacity: 0.3;
         transition: all 0.3s;
+
+        p.rating {
+          display: inline;
+          margin-left: 7%;
+        }
       }
 
       aside.price {
@@ -70,6 +75,11 @@ main section.categories-show {
 
         footer {
           opacity: 1.0;
+
+          p.rating {
+            display: inline;
+            margin-left: 7%;
+          }
         }
       }
 

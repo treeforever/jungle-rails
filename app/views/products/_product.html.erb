@@ -12,6 +12,9 @@
     <%= link_to add_item_cart_path(product_id: product.id), class: 'btn btn-primary', method: :put do %>
       <%= fa_icon "shopping-cart", text: 'Add' %>
     <% end %>
+    <% if product.review.length > 0 %>
+      <p class="rating"><%= pluralize (product.review.sum(:rating) / product.review.length).round(1), 'star'%> </p>
+    <% end %>
     <%= link_to product, class: 'btn btn-default pull-right' do %>
       Details &raquo;
     <% end %>
