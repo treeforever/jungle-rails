@@ -2,7 +2,12 @@ Rails.application.routes.draw do
 
   root to: 'products#top'
 
-  resources :products, only: [:index, :show, :top]
+  scope shallow_prefix: "sekret" do
+    resources :products, only: [:index, :show, :top] do
+      resources :reviews, only: [:create, :destroy], shallow: true
+    end
+  end
+
   resources :categories, only: [:show]
 
   resource :cart, only: [:show] do

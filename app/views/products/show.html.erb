@@ -26,12 +26,32 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-sm-8">
-        <dl class="dl-horizontal">
+
+          <br>
+          <br>
+          <% if current_user %>
+          <div class="row">
+            <div class="col-sm-6 col-sm-offset-1">
+              <p>Create a new review</p>
+              <br>
+              <%= form_for(@review, url: product_reviews_path(@product)) do |f| %>
+
+              <%= select_tag(:rating, options_for_select([[1, 1], [2, 2],[3, 3], [4, 4], [5, 5]])) %>
+               <br>
+               <br>
+              <%= f.text_area :description, size:'30x5' %>
+              <br>
+              <br>
+              <%= f.submit "Submit" %>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
+
+
           <dt>Reviews</dt>
           <br>
-            <% @product.review.each do |review| %>
+            <% @product.review.all.order("created_at DESC").each do |review| %>
               <dt>User</dt>
               <dd><%= review.user.firstname %></dd>
 
@@ -40,18 +60,16 @@
 
               <dt>Description</dt>
               <dd><%= review.description %></dd>
+          
+              <% if review.user_id.to_i == current_user.id %>
+                <%= link_to(fa_icon('trash'), sekret_review_path(review), method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: "Are you sure?" }) %>
+              <% end %>
               <br>
               <br>
               <% end %>
 
 
 
-
-
-
-
-        </dl>
-      </div>
 
 
   </article>
