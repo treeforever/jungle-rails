@@ -60,13 +60,15 @@
 
               <dt>Description</dt>
               <dd><%= review.description %></dd>
-          
-              <% if review.user_id.to_i == current_user.id %>
-                <%= link_to(fa_icon('trash'), sekret_review_path(review), method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: "Are you sure?" }) %>
+
+              <% if current_user %>
+                <% if review.user_id.to_i == current_user.id %>
+                  <%= link_to(fa_icon('trash'), sekret_review_path(review), method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: "Are you sure?" }) %>
+                <% end %>
               <% end %>
-              <br>
-              <br>
-              <% end %>
+                <br>
+                <br>
+            <% end %>
 
 
 
