@@ -23,7 +23,7 @@ class ReviewsController < ApplicationController
       @review = Review.find params[:id]
       product_id = @review.product_id
       @review.destroy
-      redirect_to("/products/#{product_id}")
+      redirect_to :back
     # end
   end
 
