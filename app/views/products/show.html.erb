@@ -30,9 +30,9 @@
           <br>
           <br>
           <% if current_user %>
-          <div class="row">
+          <div class="row new-review">
             <div class="col-sm-6 col-sm-offset-1">
-              <p>Create a new review</p>
+              <p><strong>Create a new review</strong></p>
               <br>
               <%= form_for(@review, url: product_reviews_path(@product)) do |f| %>
 
@@ -48,27 +48,30 @@
           </div>
           <% end %>
 
+          <div class="reviews">
+            <dt>Reviews</dt>
+            <br>
+              <% @product.review.all.order("created_at DESC").each do |review| %>
+                <article class="review">
+                  <dt>User</dt>
+                  <dd><%= review.user.firstname %></dd>
 
-          <dt>Reviews</dt>
-          <br>
-            <% @product.review.all.order("created_at DESC").each do |review| %>
-              <dt>User</dt>
-              <dd><%= review.user.firstname %></dd>
+                  <dt>Rating</dt>
+                  <dd><%= review.rating %></dd>
 
-              <dt>Rating</dt>
-              <dd><%= review.rating %></dd>
+                  <dt>Description</dt>
+                  <dd><%= review.description %></dd>
 
-              <dt>Description</dt>
-              <dd><%= review.description %></dd>
-
-              <% if current_user %>
-                <% if review.user_id.to_i == current_user.id %>
-                  <%= link_to(fa_icon('trash'), sekret_review_path(review), method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: "Are you sure?" }) %>
-                <% end %>
-              <% end %>
-                <br>
-                <br>
-            <% end %>
+                  <% if current_user %>
+                    <% if review.user_id.to_i == current_user.id %>
+                      <%= link_to(fa_icon('trash'), sekret_review_path(review), method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: "Are you sure?" }) %>
+                    <% end %>
+                  <% end %>
+                    <br>
+                    <br>
+                  <% end %>
+                </article>
+              <div>
 
 
 
