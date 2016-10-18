@@ -1,5 +1,5 @@
 module ProductHelper
   def average_rating(product)
-    pluralize (product.review.sum(:rating) / product.review.length).round(1), 'star'
+    pluralize (product.reviews.sum(:rating) / product.reviews.length).round(1), 'star'
   end
 end

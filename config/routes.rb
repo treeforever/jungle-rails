@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:create, :show]
 
 
-  get '/login' => 'sessions#new'
+ get '/login' => 'sessions#new'
  post '/login' => 'sessions#create'
  get '/logout' => 'sessions#destroy'
 
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'dashboard#show'
     resources :products, except: [:edit, :update, :show]
-    resources :categories, only: [:index, :update, :show]
+    resources :categories, only: [:index, :update, :show, :create, :new]
   end
 
 

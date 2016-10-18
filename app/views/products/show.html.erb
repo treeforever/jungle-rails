@@ -35,8 +35,8 @@
               <p><strong>Create a new review</strong></p>
               <br>
               <%= form_for(@review, url: product_reviews_path(@product)) do |f| %>
-
-              <%= select_tag(:rating, options_for_select([[1, 1], [2, 2],[3, 3], [4, 4], [5, 5]])) %>
+              <% # CodeReview make sure to use the form_for helper methods so that everything is namespaced properly and the require_params methods will work%>
+              <%= f.select(:rating, options_for_select([[1, 1], [2, 2],[3, 3], [4, 4], [5, 5]])) %>
                <br>
                <br>
               <%= f.text_area :description, size:'30x5' %>
@@ -51,7 +51,7 @@
           <div class="reviews">
             <dt>Reviews</dt>
             <br>
-              <% @product.review.all.order("created_at DESC").each do |review| %>
+              <% @product.reviews.all.order("created_at DESC").each do |review| %>
                 <article class="review">
                   <dt>User</dt>
                   <dd><%= review.user.firstname %></dd>
